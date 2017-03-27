@@ -16,7 +16,10 @@ API.fetchTemplate = (id) => {
 }
 
 API.signIn = (data) => {
-  return axios.post(`${origin}/sign-in`, data)
+  return axios.post(`${origin}/sign-in`, {
+    headers: {"Authorization": `Token token=${store.user.token}`}
+  })
+  .then()
 }
 
 API.signUp = (data) => {

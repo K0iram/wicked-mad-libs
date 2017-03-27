@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import API from '../../../API'
+
 import './style.css'
 
 class SignIn extends Component {
@@ -22,7 +24,10 @@ class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    alert('I did it!' + this.state.email)
+    API.signIn(event).then((res) => {
+      console.log(res)
+    })
+    .catch()
   }
 
   render() {
@@ -49,8 +54,8 @@ class SignIn extends Component {
                        type="password"
                        placeholder="Password"
                        required="required"
-                       onChange={this.handleEmailChange}
-                       value={this.state.email}/>
+                       onChange={this.handlePassChange}
+                       value={this.state.password}/>
               </div>
               <br/>
               <div>

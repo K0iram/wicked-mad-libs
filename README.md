@@ -17,3 +17,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 <li>A signed in user can see all saves stories</li>
 <li>A signed in user can delete saved stories</li>
 <li>A signed in user can sign out</li>
+
+
+## Wireframes and planning
+
+  <a href="http://imgur.com/a/zRHvw"> See Them Here </a>
