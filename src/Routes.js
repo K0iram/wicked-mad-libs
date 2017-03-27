@@ -21,7 +21,6 @@ const Routes = () => (
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
 
-
     </AppLayout>
   </Router>
 )

@@ -9,7 +9,7 @@ class Home extends Component {
         <p>Click <Link to="/stories">Here</Link> to play a round!</p>
 
         <p>For more fun and to be able to save your stories,
-           please <Link to="/signup">login!</Link></p>
+           please <Link to="/signup">sign up!</Link></p>
       </div>
     )
   }
