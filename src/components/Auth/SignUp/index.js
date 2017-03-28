@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import API from '../../../API'
+import STORE from '../../../store'
 
 import './style.css'
 
 class SignUp extends Component {
   constructor(props) {
     super(props)
-    this.state = {email: '',
-                  password: '',
-                  passwordConfirmation: ''}
+    this.state = {
+      email: '',
+      password: '',
+      password_confirmation: '',
+      registered: !!STORE.token
+    }
+
 
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePassChange = this.handlePassChange.bind(this)
@@ -26,19 +31,29 @@ handlePassChange(event) {
 }
 
 handlePassConfirmChange(event) {
-  this.setState({passwordConfirmation: event.target.value})
+  this.setState({password_confirmation: event.target.value})
 }
 
 handleSubmit(event) {
   event.preventDefault()
-  console.log(this.state.email);
-  API.signUp(event).then((res) => {
-    console.log(res)
+  let data = {credentials: this.state}
+  API.signUp(data).then((res) => {
+
+    let data = {credentials: {email: this.state.email, password: this.state.password}}
+    API.signIn(data).then((res) => {
+      STORE.user = res.data.user
+      STORE.token = res.data.user.token
+      window.localStorage.setItem('user', JSON.stringify(res.data.user))
+
+      this.setState({registered: true})
+    })
   })
-  .catch()
 }
 
   render() {
+
+    if (this.state.registered) return <Redirect to="/signin"/>
+
     return (
       <div>
         <h1>Sign Up</h1>
@@ -69,11 +84,11 @@ handleSubmit(event) {
                        placeholder="Password Confirmation"
                        required="required"
                        onChange={this.handlePassConfirmChange}
-                       value={this.state.passwordConfirmation}/>
+                       value={this.state.password_confirmation}/>
               </div>
               <br/>
               <div>
-                <input className="button-primary" type="submit" value="Submit" />
+                <input className="button-primary button" type="submit" value="Submit" />
               </div>
             </div>
 

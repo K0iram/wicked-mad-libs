@@ -1,22 +1,72 @@
 import React, { Component } from 'react'
 import Navigation from '../../components/Navigation'
-import './App.css'
-import '../../css/skeleton.css';
+import Snackbar from 'material-ui/Snackbar';
 
+import './App.css'
+import '../../css/skeleton.css'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
+
+injectTapEventPlugin()
 
 class AppLayout extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      snackbarShow: false,
+      message: ''
+    }
+
+    window.AppNotify = this.showNotification //super hack
+  }
+
+  showNotification = (message) => {
+    this.setState({
+      snackbarShow: true,
+      message: message
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      snackbarShow: false,
+      messag: ''
+    });
+  };
+
+  renderChildren() {
+    const childrenWithProps = React.Children.map(this.props.children,
+     (child) => React.cloneElement(child, {
+       notify: this.showNotification
+     })
+    )
+
+    return childrenWithProps
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <h1>Wicked Mad Libs</h1>
-        <Navigation />
+      <MuiThemeProvider>
+        <div className="App">
+          <Navigation />
 
-        <div className="main-content">
-          {this.props.children}
+          <div className="main-content">
+            { this.renderChildren() }
+          </div>
+
+          <Snackbar
+            open={this.state.snackbarShow}
+            message={this.state.message}
+            autoHideDuration={4000}
+            onRequestClose={this.handleRequestClose}
+          />
+
         </div>
-
-      </div>
+      </MuiThemeProvider>
     );
   }
 }

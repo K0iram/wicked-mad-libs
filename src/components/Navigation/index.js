@@ -1,16 +1,68 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import FlatButton from 'material-ui/FlatButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
-class Navigation extends Component {
+
+import STORE from '../../store'
+
+class Login extends Component {
+  static muiName = 'FlatButton';
+
   render() {
     return (
-      <nav className="main-nav">
-        <Link to="/home">Home</Link>
-        <span> | </span>
-        <Link to="/stories">Stories</Link>
-        <span> | </span>
-        <Link to="/about">About</Link>
-      </nav>
+      <Link to="/signin"><FlatButton {...this.props} label="Login" /></Link>
+    );
+  }
+}
+
+const Logged = (props) => (
+  <IconMenu
+    {...props}
+    iconButtonElement={
+      <IconButton><MoreVertIcon /></IconButton>
+    }
+    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+  >
+    <Link to="/changepassword"><MenuItem primaryText="ChangePassword" /></Link>
+    <Link to="/logout"><MenuItem primaryText="Sign out" /></Link>
+  </IconMenu>
+)
+
+Logged.muiName = 'IconMenu';
+
+class Navigation extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      logged: !!STORE.token,
+    }
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ logged: !!STORE.token})
+  }
+
+  handleChange = (event, logged) => {
+    this.setState({logged: logged});
+  }
+
+
+  render() {
+    return (
+
+      <AppBar
+        title="Wicked Mad Libs"
+        iconElementRight={this.state.logged ? <Logged/> : <Login />}
+      />
     )
   }
 }

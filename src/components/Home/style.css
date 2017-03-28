@@ -1,3 +1,15 @@
 .field {
   display: block;
 }
+
+.story-card {
+  max-width: 250px;
+  height: 250px;
+  display: inline-block;
+  margin: 10px 10px;
+  vertical-align: top;
+}
+
+.story-list {
+  margin: 0 auto;
+}

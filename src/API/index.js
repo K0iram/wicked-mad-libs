@@ -3,9 +3,7 @@ const API = {}
 
 const store = require('../store');
 const origin = process.ENV === 'prod' ? '' : 'http://localhost:4741'
-let config = {
-  headers: {'Authorization': `Token token=${store.user.token}`}
-};
+
 
 API.fetchTemplates = () => {
   return axios.get(`${origin}/templates`)
@@ -15,24 +13,42 @@ API.fetchTemplate = (id) => {
   return axios.get(`${origin}/templates/${id}`)
 }
 
-API.signIn = (data) => {
-  return axios.post(`${origin}/sign-in`, {
-    headers: {"Authorization": `Token token=${store.user.token}`}
-  })
-  .then()
-}
+API.signIn = function (data){
+  return axios({
+    url: origin + '/sign-in',
+    method: 'POST',
+    data,
+  });
+};
 
-API.signUp = (data) => {
-  return axios.post(`${origin}/sign-up`)
-}
+API.signUp = function (data){
+  return axios({
+    url: origin + '/sign-up',
+    method: 'POST',
+    data,
+  });
+};
 
-API.changePassword = (data) => {
-  return axios.patch(`${origin}/change-password/${store.user.id}`, config)
-}
+API.changePassword = function (data) {
+  return axios({
+    url: `${origin}/change-password/${store.user.id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+    data,
+  });
+};
 
-API.signOut = () => {
-  return axios.delete(`${origin}/sign-out/${store.user.id}`, config)
-}
+API.signOut = function () {
+  return axios({
+    url: `${origin}/sign-out/${store.user.id}`,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+  });
+};
 
 
 export default API

@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import API from '../../../API'
+import STORE from '../../../store'
 
 import './style.css'
 
 class SignIn extends Component {
   constructor(props) {
     super(props)
-    this.state = {email: '',
-                  password: ''}
+
+    this.state = {
+      email: '',
+      password: '',
+      loggedIn: !!STORE.token
+    }
 
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePassChange = this.handlePassChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleEmailChange(event) {
@@ -24,13 +30,20 @@ class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    API.signIn(event).then((res) => {
-      console.log(res)
+    let data = {credentials: {email: this.state.email, password: this.state.password}}
+    API.signIn(data).then((res) => {
+      STORE.user = res.data.user
+      STORE.token = res.data.user.token
+      window.localStorage.setItem('user', JSON.stringify(res.data.user))
+
+      window.AppNotify("You have successfully logged in!")
+      this.setState({loggedIn: true})
     })
     .catch()
   }
 
   render() {
+    if (this.state.loggedIn) return <Redirect to="/home"/>
     return (
       <div>
         <h1>Sign In</h1>
@@ -59,8 +72,7 @@ class SignIn extends Component {
               </div>
               <br/>
               <div>
-                <br/>
-                <input className="button-primary" type="submit" value="Submit" />
+                <input className="button-primary button" type="submit" value="Submit" />
               </div>
             </div>
 
