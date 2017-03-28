@@ -47,6 +47,9 @@ componentDidMount() {
             )
           })}
         </div>
+        <div className="description">
+          
+        </div>
       </div>
     )
   }

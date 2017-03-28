@@ -30,6 +30,7 @@ const Logged = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
+    <Link to="/home"><MenuItem primaryText="Home" /></Link>
     <Link to="/changepassword"><MenuItem primaryText="ChangePassword" /></Link>
     <Link to="/logout"><MenuItem primaryText="Sign out" /></Link>
   </IconMenu>

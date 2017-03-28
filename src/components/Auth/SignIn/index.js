@@ -36,10 +36,12 @@ class SignIn extends Component {
       STORE.token = res.data.user.token
       window.localStorage.setItem('user', JSON.stringify(res.data.user))
 
-      window.AppNotify("You have successfully logged in!")
+      window.AppNotify("You have successfully logged in as " + this.state.email)
       this.setState({loggedIn: true})
     })
-    .catch()
+    .catch((err) => {
+      window.AppNotify("Something went wrong please check email/password and try again.")
+    })
   }
 
   render() {
@@ -80,6 +82,7 @@ class SignIn extends Component {
 
           <br/>
           <p> Don't have an account? Please <Link to="/signup">Sign Up!</Link></p>
+          <p> Don't want to save you finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
       </div>
     );
   }

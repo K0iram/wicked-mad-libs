@@ -35,11 +35,15 @@ class ChangePass extends Component {
     API.changePassword(data).then((res) => {
       window.AppNotify("You have successfully changed your password")
     })
+    .catch((err) => {
+      window.AppNotify("Make sure you old password is correct and try again.")
+    })
     }
 
   render() {
 
     return (
+      <div className='change-form'>
       <form className='sign-up' onSubmit={this.handleSubmit}>
         <div className="row sign-up">
           <div className="six columns">
@@ -67,6 +71,11 @@ class ChangePass extends Component {
         </div>
 
       </form>
+
+        <p>Go Back <Link to="/signin">Home!</Link></p>
+      </div>
+
+
     )
   }
 }

@@ -46,6 +46,10 @@ handleSubmit(event) {
       window.localStorage.setItem('user', JSON.stringify(res.data.user))
 
       this.setState({registered: true})
+      (window.AppNotify("Thank you for signing up"))
+    })
+    .catch((err) => {
+    window.AppNotify("Something went wrong please try again.")
     })
   })
 }
@@ -99,6 +103,7 @@ handleSubmit(event) {
 
           <br/>
           <p> Already have an account? Please <Link to="/signin">Login here!</Link></p>
+          <p> Don't want to save you finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
       </div>
     );
   }

@@ -5,3 +5,8 @@
 .btn {
   padding-left: 30px;
 }
+
+.story {
+  width: 75%;
+  display: table-cell;
+}

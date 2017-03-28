@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import API from '../../API/'
 import './style.css'
 
@@ -52,7 +53,22 @@ class Stories extends Component {
       "$$$FEMALE_NAME": "A Female Name",
       "$$$BODY_PART": "A Body Part",
       "$$$BODY_ORGAN": "A Human Organ",
-      "$$$MALE_NAME": "A Male Name"
+      "$$$MALE_NAME": "A Male Name",
+      "$$$VERB_ING": "A Verb With ing",
+      "$$$CELEB_FEMALE": "A Female Celebrity",
+      "$$$SILLY_WORD": "A Silly Word",
+      "$$$FOOD": "A Type of Food",
+      "$$$VERB_PAST": "A Past Tense Verb",
+      "$$$NOUN": "A Noun",
+      "$$$ADVERB": "A Adverb",
+      "$$$PLURAL_NOUN": "A Plural Noun",
+      "$$$SHOE_TYPE_PLURAL": "Shoe Type (Plural)",
+      "$$$BUG_TYPE": "Type of Bug",
+      "$$$VERB": "A Verb",
+      "$$$EXCLAMATION": "Eclamation!",
+      "$$$LIQUID": "A Liquid",
+      "$$$FOOD_PLURAL": "A Type of Food (plural)"
+
     }
 
     return types[type]
@@ -61,7 +77,12 @@ class Stories extends Component {
   renderFormFeilds() {
     return this.state.requiredWords.map((type, index) => {
       return (
-        <li><input type='text' placeholder={this.getFormattedType(type)} onChange={ this.updateStory.bind(this, index) } required='required' /></li>
+        <input
+          type='text'
+          required='required'
+          maxLength='20'
+          placeholder={this.getFormattedType(type)}
+          onChange={ this.updateStory.bind(this, index) } />
       )
     })
   }
@@ -88,17 +109,21 @@ class Stories extends Component {
       <div className="home">
         <h1>{ this.state.title }</h1>
         {this.state.isComplete &&
+        <div>
         <p>{this.getFinalStory()}</p>
+        <button>Save This Lib!</button>
+        </div>
         }
 
         {!this.state.isComplete &&
           <div>
             <h5>Please fill in all the fields and press finished to see your custom story!</h5>
 
-            <ol className="story">
+            <form className="story">
               { this.renderFormFeilds() }
-            </ol>
+            </form>
             <button className="button-primary btn" onClick={ this.showPreview }>Finished!</button>
+            <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
 
           </div>
         }
