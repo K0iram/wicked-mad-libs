@@ -36,12 +36,11 @@ API.pushPages = function (data){
 
 API.destroyPages = function (id){
   return axios({
-    url: origin + '/pages',
+    url: origin + `/pages/${id}`,
     method: 'DELETE',
     headers: {
       Authorization: `Token token=${store.user.token}`,
     },
-    id,
   });
 };
 

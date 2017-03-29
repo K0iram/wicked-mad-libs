@@ -2,26 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import API from '../../API/'
 import STORE from '../../store'
-import {Card, CardActions, CardHeader, CardText, CardFooter} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import './style.css'
 
-
-const CardTemplate = (page) => (
-  <Card className='page-card'>
-    <CardHeader
-      className='card-title'
-      title={page.title}
-      subtitle={page.createdAt}
-    />
-  <CardText>
-    <div className="card-text">{page.body}</div>
-    </CardText>
-    <CardActions>
-        <button className="button btn">Delete</button>
-    </CardActions>
-  </Card>
-);
 
 
 class Profile extends Component {
@@ -32,6 +15,8 @@ class Profile extends Component {
       pages: []
     }
 
+    this.deletePage = this.deletePage.bind(this)
+
   }
 
 componentDidMount() {
@@ -40,6 +25,30 @@ componentDidMount() {
   })
 }
 
+renderCard(page) {
+  return(
+  <Card className='page-card'>
+    <CardHeader
+      className='card-title'
+      title={page.title}
+      subtitle={page.createdAt}
+    />
+  <CardText>
+    <div className="card-text">{page.body}</div>
+    </CardText>
+    <CardActions>
+        <button onClick={this.deletePage.bind(this, page.id)} className="button btn">Delete</button>
+    </CardActions>
+  </Card>
+  )
+}
+
+deletePage(event) {
+  let id = event
+  API.destroyPages(id).then((res) => {
+    window.AppNotify("You have deleted a story with the id of " + event)
+  })
+}
 
   render() {
     return (
@@ -48,7 +57,7 @@ componentDidMount() {
         <div className="page-list">
           {this.state.pages.map((page) => {
             return (
-              CardTemplate(page)
+              this.renderCard(page)
             )
           })}
         </div>
