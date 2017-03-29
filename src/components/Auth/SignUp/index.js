@@ -55,8 +55,9 @@ handleSubmit(event) {
 }
 
   render() {
+    const hasRedirectState = (!!this.props.location.state && !!this.props.location.state.storyId) ? {pathname: `/stories/${this.props.location.state.storyId}`, state: this.props.location.state} : "/home"
 
-    if (this.state.registered) return <Redirect to="/signin"/>
+    if (this.state.registered) return <Redirect to={hasRedirectState}/>
 
     return (
       <div>

@@ -10,6 +10,8 @@ import SignUp from './components/Auth/SignUp'
 import SignIn from './components/Auth/SignIn'
 import LogOut from './components/Auth/LogOut'
 import ChangePass from './components/Auth/ChangePass'
+import Profile from './components/Profile'
+
 
 
 
@@ -24,7 +26,9 @@ const Routes = () => (
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
       <Route path="/logout" component={LogOut} />
-        <Route path="/changepassword" component={ChangePass} />
+      <Route path="/changepassword" component={ChangePass} />
+      <Route path="/profile" component={Profile} />
+
 
 
     </AppLayout>

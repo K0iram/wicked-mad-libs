@@ -9,8 +9,11 @@
   display: inline-block;
   margin: 10px 10px;
   vertical-align: top;
+  background-color: rgb(255, 247, 186);
 }
 
 .story-list {
   margin: 0 auto;
+  margin-top: 35px;
+  background-color: rgba(128, 128, 128, 0.31);
 }

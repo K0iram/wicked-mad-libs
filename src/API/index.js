@@ -13,6 +13,27 @@ API.fetchTemplate = (id) => {
   return axios.get(`${origin}/templates/${id}`)
 }
 
+API.fetchPages = function (){
+  return axios({
+    url: origin + '/pages',
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    }
+  });
+};
+
+API.pushPages = function (data){
+  return axios({
+    url: origin + '/pages',
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+    data,
+  });
+};
+
 API.signIn = function (data){
   return axios({
     url: origin + '/sign-in',

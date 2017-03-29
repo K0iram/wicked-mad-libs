@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import API from '../../API/'
+import STORE from '../../store'
 import './style.css'
 
 
@@ -9,31 +10,38 @@ class Stories extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      templateStore: '',
-      requiredWords: [],
-      title: '',
-      description: '',
-      userWords: [],
 
-      finalStory: '',
-      isComplete: false
-    }
+      this.state = {
+        templateStore: '',
+        requiredWords: [],
+        title: '',
+        description: '',
+        userWords: [],
+
+        finalStory: '',
+        isComplete: false
+      }
 
     this.showPreview = this.showPreview.bind(this)
+    this.pushPages = this.pushPages.bind(this)
 
   }
 
   componentDidMount() {
-    API.fetchTemplate(this.props.match.params.storyId).then((res) => {
-      this.setState({
-        templateStore: res.data.template.templateString,
-        requiredWords: res.data.template.requiredWords,
-        title: res.data.template.title,
-        description: res.data.template.description,
-        userWords: res.data.template.requiredWords
+    if(!!this.props.location.state && !!this.props.location.state.toSave) {
+      this.setState(this.props.location.state.toSave)
+    } else {
+
+      API.fetchTemplate(this.props.match.params.storyId).then((res) => {
+        this.setState({
+          templateStore: res.data.template.templateString,
+          requiredWords: res.data.template.requiredWords,
+          title: res.data.template.title,
+          description: res.data.template.description,
+          userWords: res.data.template.requiredWords
+        })
       })
-    })
+    }
   }
 
   updateStory(index, event) {
@@ -103,27 +111,45 @@ class Stories extends Component {
     this.setState({finalStory: this.getFinalStory(), isComplete: true})
   }
 
+  pushPages() {
+    let data = {page:{title: this.state.title, body: this.getFinalStory() }}
+    event.preventDefault()
+    API.pushPages(data).then((res) => {
+    })
+  }
+
   render() {
 
     return (
       <div className="home">
         <h1>{ this.state.title }</h1>
         {this.state.isComplete &&
-        <div>
-        <p>{this.getFinalStory()}</p>
-        <button>Save This Lib!</button>
-        </div>
+          <div>
+            <p>{this.getFinalStory()}</p>
+            {
+              STORE.token &&
+                <button onClick={ this.pushPages }>Save This Lib!</button>
+            }
+            {
+              !STORE.token &&
+                <Link
+                  className="button"
+                  to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>Save This Lib!</Link>
+            }
+          </div>
         }
 
         {!this.state.isComplete &&
           <div>
             <h5>Please fill in all the fields and press finished to see your custom story!</h5>
 
-            <form className="story">
+            <form className="story" onSubmit={ this.showPreview }>
               { this.renderFormFeilds() }
+              <br/>
+              <button className="button-primary btn" type='submit'>Finished!</button>
+              <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
             </form>
-            <button className="button-primary btn" onClick={ this.showPreview }>Finished!</button>
-            <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
+
 
           </div>
         }

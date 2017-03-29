@@ -45,7 +45,8 @@ class SignIn extends Component {
   }
 
   render() {
-    if (this.state.loggedIn) return <Redirect to="/home"/>
+    const hasRedirectState = (!!this.props.location.state && !!this.props.location.state.storyId) ? {pathname: `/stories/${this.props.location.state.storyId}`, state: this.props.location.state} : "/home"
+    if (this.state.loggedIn) return <Redirect to={hasRedirectState}/>
     return (
       <div>
         <h1>Sign In</h1>

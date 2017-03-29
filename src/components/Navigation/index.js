@@ -6,7 +6,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import ActionHome from 'material-ui/svg-icons/action/home';
 
 
 import STORE from '../../store'
@@ -20,6 +20,21 @@ class Login extends Component {
     );
   }
 }
+
+const styles = {
+  smallIcon: {
+  width: 36,
+  height: 36,
+},
+mediumIcon: {
+  width: 48,
+  height: 48,
+},
+largeIcon: {
+  width: 60,
+  height: 60,
+},
+};
 
 const Logged = (props) => (
   <IconMenu
@@ -61,11 +76,22 @@ class Navigation extends Component {
     return (
 
       <AppBar
+        className="nav-bar"
         title="Wicked Mad Libs"
+        iconElementLeft={
+          <Link to='/home'>
+          <IconButton
+          iconStyle={styles.smallIcon}
+          style={styles.small}>
+          <ActionHome />
+          </IconButton>
+          </Link>
+          }
         iconElementRight={this.state.logged ? <Logged/> : <Login />}
       />
     )
   }
 }
 
+<IconButton iconStyle={styles.smallIcon} style={styles.small}><ActionHome /></IconButton>
 export default Navigation
