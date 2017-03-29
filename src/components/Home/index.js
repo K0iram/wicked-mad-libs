@@ -9,13 +9,14 @@ import './style.css'
 const CardTemplate = (template) => (
   <Card className='story-card'>
     <CardHeader
+      className="card-title"
       title={template.title}
       subtitle={template.description}
     />
     <CardActions>
-      <FlatButton>
-        <Link to={`/stories/${ template._id}`}> Start this story!</Link>
-      </FlatButton>
+      <Link to={`/stories/${ template._id}`}>
+      <button className='button-primary button-start'>Start this story!</button>
+      </Link>
     </CardActions>
   </Card>
 );
@@ -40,6 +41,7 @@ componentDidMount() {
   render() {
     return (
       <div>
+        <h1 className="welcome">Pick A Story And Have Some Fun!</h1>
         <div className="story-list">
           {this.state.templates.map((template) => {
             return (
@@ -48,7 +50,13 @@ componentDidMount() {
           })}
         </div>
         <div className="description">
-          
+          <br/>
+          <p><strong>Mad Libs</strong> - a phrasal template word game where one
+             player prompts others for a list of words to substitute
+             for blanks in a story, before reading the – often comical
+             or nonsensical – story aloud. The game is frequently played
+             as a party game or as a pastime.
+          </p>
         </div>
       </div>
     )

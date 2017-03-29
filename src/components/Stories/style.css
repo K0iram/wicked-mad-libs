@@ -10,3 +10,14 @@
   width: 65%;
   display: table-cell;
 }
+
+.final-story {
+  border: 2px solid #333;
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.save {
+  margin-top: 15px;
+}

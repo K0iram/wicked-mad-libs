@@ -27,7 +27,7 @@ const Routes = () => (
       <Route path="/signin" component={SignIn} />
       <Route path="/logout" component={LogOut} />
       <Route path="/changepassword" component={ChangePass} />
-      <Route path="/profile" component={Profile} />
+      <Route exact path="/profile/:userId" component={Profile} />
 
 
 

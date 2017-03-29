@@ -1,0 +1,39 @@
+.field {
+  display: block;
+}
+
+.page-card {
+  max-width: 400px;
+  height: 400px;
+  display: inline-block;
+  margin: 10px 10px;
+  vertical-align: top;
+  background-color: rgb(255, 247, 186) !important;
+  text-align: center;
+  overflow: scroll;
+}
+
+.page-list {
+  margin: 0 auto;
+  margin-top: 35px;
+  background-color: rgba(128, 128, 128, 0.31);
+}
+
+.btn {
+  padding-left: 30px;
+  background-color: rgb(225, 93, 93);
+}
+
+.card-text {
+  overflow: scroll;
+  border: 1px solid grey;
+  padding: 10px;
+
+}
+
+.card-title{
+  font-weight: bold !important;
+  text-decoration: underline !important;
+  text-align: left !important;
+  border-bottom: 3px solid black;
+}

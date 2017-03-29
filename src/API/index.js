@@ -34,6 +34,17 @@ API.pushPages = function (data){
   });
 };
 
+API.destroyPages = function (id){
+  return axios({
+    url: origin + '/pages',
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+    id,
+  });
+};
+
 API.signIn = function (data){
   return axios({
     url: origin + '/sign-in',

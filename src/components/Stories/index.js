@@ -125,16 +125,18 @@ class Stories extends Component {
         <h1>{ this.state.title }</h1>
         {this.state.isComplete &&
           <div>
-            <p>{this.getFinalStory()}</p>
+            <p className="final-story">{this.getFinalStory()}</p>
             {
               STORE.token &&
-                <button onClick={ this.pushPages }>Save This Lib!</button>
+                <Link to='/profile'><button onClick={ this.pushPages }>Save This Lib!</button></Link>
             }
             {
               !STORE.token &&
                 <Link
-                  className="button"
-                  to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>Save This Lib!</Link>
+                  className="button-primary btn"
+                  to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>
+                  <button className="btn-save save" type='submit'>Save this lib!</button>
+                </Link>
             }
           </div>
         }

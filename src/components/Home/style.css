@@ -3,17 +3,35 @@
 }
 
 .story-card {
-  max-width: 250px;
-  width:250px;
+  width:400px;
   height: 250px;
   display: inline-block;
   margin: 10px 10px;
   vertical-align: top;
-  background-color: rgb(255, 247, 186);
+  background-color: rgb(255, 247, 186) !important;
 }
 
 .story-list {
   margin: 0 auto;
   margin-top: 35px;
   background-color: rgba(128, 128, 128, 0.31);
+}
+
+.card-title{
+  font-weight: bold !important;
+  text-align: left !important;
+}
+
+p {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+
+.button-start {
+  margin-top: 100px;
+}
+
+.welcome {
+  margin-top: 20px;
 }
