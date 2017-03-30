@@ -133,11 +133,15 @@ class Stories extends Component {
             }
             {
               !STORE.token &&
-                <Link
-                  className="button-primary btn"
-                  to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>
-                  <button className="save" type='submit'>Save this lib!</button>
-                </Link>
+                <div>
+                  <Link
+                    className="button-primary btn"
+                    to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>
+                    <button className="save" type='submit'>Save this lib!</button>
+                  </Link>
+                  <br/>
+                  <h5> You must have an account to save this lib!</h5>
+                </div>
             }
           </div>
         }
@@ -152,7 +156,6 @@ class Stories extends Component {
               <button className="button-primary btn" type='submit'>Finished!</button>
               <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
             </form>
-
 
           </div>
         }
