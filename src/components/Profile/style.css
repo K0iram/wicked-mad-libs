@@ -3,7 +3,8 @@
 }
 
 .page-card {
-  width: 350px;
+  max-width: 400px;
+  min-width: 360px;
   height: 350px;
   display: inline-block;
   margin: 10px 10px;
