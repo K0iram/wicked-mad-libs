@@ -4,7 +4,7 @@ const API = {}
 const store = require('../store');
 const config = {
   production: {
-    api: 'https://murmuring-depths-64110.herokuapp.com/'
+    api: 'https://murmuring-depths-64110.herokuapp.com'
   },
   development: {
     api: 'http://localhost:4741'
