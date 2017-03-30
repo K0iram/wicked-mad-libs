@@ -2,8 +2,16 @@ import axios from 'axios'
 const API = {}
 
 const store = require('../store');
-const origin = process.ENV === 'prod' ? '' : 'http://localhost:4741'
+const config = {
+  production: {
+    api: 'https://murmuring-depths-64110.herokuapp.com/'
+  },
+  development: {
+    api: 'http://localhost:4741'
+  }
+}
 
+const origin = config[process.env.NODE_ENV].api
 
 API.fetchTemplates = () => {
   return axios.get(`${origin}/templates`)
@@ -15,7 +23,7 @@ API.fetchTemplate = (id) => {
 
 API.fetchPages = function (){
   return axios({
-    url: origin + '/pages',
+    url: origin + `/pages`,
     method: 'GET',
     headers: {
       Authorization: `Token token=${store.user.token}`,

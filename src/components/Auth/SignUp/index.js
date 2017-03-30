@@ -37,8 +37,8 @@ handlePassConfirmChange(event) {
 handleSubmit(event) {
   event.preventDefault()
   let data = {credentials: this.state}
-  API.signUp(data).then((res) => {
 
+  API.signUp(data).then((res) => {
     let data = {credentials: {email: this.state.email, password: this.state.password}}
     API.signIn(data).then((res) => {
       STORE.user = res.data.user
@@ -48,10 +48,11 @@ handleSubmit(event) {
       this.setState({registered: true})
       (window.AppNotify("Thank you for signing up"))
     })
-    .catch((err) => {
-    window.AppNotify("Something went wrong please try again.")
-    })
   })
+  .catch(() => {
+    window.AppNotify("Something went wrong please try again.")
+  })
+
 }
 
   render() {

@@ -17,10 +17,6 @@ class ChangePass extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {
-    this.props.notify("I loaded and now im tellin u all about it.")
-  }
-
   handlePassChange(event) {
     this.setState({password: event.target.value})
   }

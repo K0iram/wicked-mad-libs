@@ -22,8 +22,8 @@ class Profile extends Component {
 
 componentDidMount() {
   this.setState({loggedIn: !!STORE.token})
-
-  API.fetchPages().then((res) => {
+  let id = STORE.user.id
+  API.fetchPages(id).then((res) => {
     this.setState({pages: res.data.pages})
   })
 }
@@ -49,6 +49,9 @@ renderCard(page) {
 deletePage(event) {
   let id = event
   API.destroyPages(id).then((res) => {
+    API.fetchPages(id).then((res) => {
+      this.setState({pages: res.data.pages})
+    })
     window.AppNotify("You have deleted a story with the id of " + event)
   })
 }
