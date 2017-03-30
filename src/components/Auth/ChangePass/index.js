@@ -15,6 +15,11 @@ class ChangePass extends Component {
     this.handlePassChange = this.handlePassChange.bind(this)
     this.handlePassConfirmChange = this.handlePassConfirmChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.clearValue = this.clearValue.bind(this)
+  }
+
+  clearValue() {
+    this.setState({password: '', password_new: ''})
   }
 
   handlePassChange(event) {
@@ -29,6 +34,7 @@ class ChangePass extends Component {
     event.preventDefault()
     let data = {passwords: {old: this.state.password, new: this.state.password_new}}
     API.changePassword(data).then((res) => {
+      this.clearValue()
       window.AppNotify("You have successfully changed your password")
     })
     .catch((err) => {
