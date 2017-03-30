@@ -40,6 +40,7 @@ class ChangePass extends Component {
 
     return (
       <div>
+        <h2> Change your password </h2>
       <form className='sign-up' onSubmit={this.handleSubmit}>
         <div className="row">
           <div className="six columns change-form">
@@ -63,12 +64,12 @@ class ChangePass extends Component {
           <br/>
           <div>
             <input className="button-primary button" type="submit" value="Submit" />
+            <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
           </div>
         </div>
 
       </form>
 
-        <p>Go Back <Link to="/signin">Home!</Link></p>
       </div>
 
 
