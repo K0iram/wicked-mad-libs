@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import API from '../../API/'
 import STORE from '../../store'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
@@ -12,7 +12,8 @@ class Profile extends Component {
     super(props)
 
     this.state = {
-      pages: []
+      pages: [],
+      loggedIn: !!STORE.token
     }
 
     this.deletePage = this.deletePage.bind(this)
@@ -20,6 +21,8 @@ class Profile extends Component {
   }
 
 componentDidMount() {
+  this.setState({loggedIn: !!STORE.token})
+
   API.fetchPages().then((res) => {
     this.setState({pages: res.data.pages})
   })
@@ -51,6 +54,7 @@ deletePage(event) {
 }
 
   render() {
+    if (!this.state.loggedIn) return <Redirect to="/home"/>
     return (
       <div>
         <h1>{STORE.user.email} Profile</h1>

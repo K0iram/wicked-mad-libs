@@ -87,6 +87,7 @@ class Stories extends Component {
       return (
         <input
           type='text'
+          className='story-form'
           required='required'
           maxLength='20'
           placeholder={this.getFormattedType(type)}

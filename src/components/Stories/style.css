@@ -18,6 +18,10 @@
   padding: 20px;
 }
 
+story-form {
+  width: 400px !important;
+}
+
 .save {
   margin-top: 15px;
 }
