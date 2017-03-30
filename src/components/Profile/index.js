@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import API from '../../API/'
 import STORE from '../../store'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
+import moment from 'moment'
 import './style.css'
 
 
@@ -34,9 +35,9 @@ renderCard(page) {
     <CardHeader
       className='card-title'
       title={page.title}
-      subtitle={page.createdAt}
+      subtitle={moment(page.createdAt).format("MM/DD/YYYY")}
     />
-  <CardText>
+  <CardText className="card-box">
     <div className="card-text">{page.body}</div>
     </CardText>
     <CardActions>
@@ -59,8 +60,8 @@ deletePage(event) {
   render() {
     if (!this.state.loggedIn) return <Redirect to="/home"/>
     return (
-      <div>
-        <h1>{STORE.user.email} Profile</h1>
+      <div className='card-header'>
+        <h1>Welcome back {STORE.user.email}</h1>
         <div className="page-list">
           {this.state.pages.map((page) => {
             return (

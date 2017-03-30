@@ -136,7 +136,7 @@ class Stories extends Component {
                 <Link
                   className="button-primary btn"
                   to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>
-                  <button className="btn-save save" type='submit'>Save this lib!</button>
+                  <button className="save" type='submit'>Save this lib!</button>
                 </Link>
             }
           </div>

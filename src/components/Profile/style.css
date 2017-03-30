@@ -3,14 +3,13 @@
 }
 
 .page-card {
-  max-width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   display: inline-block;
   margin: 10px 10px;
   vertical-align: top;
-  background-color: rgb(255, 247, 186) !important;
+  background-color: #666;
   text-align: center;
-  overflow: scroll;
 }
 
 .page-list {
@@ -21,19 +20,35 @@
 
 .btn {
   padding-left: 30px;
-  background-color: rgb(225, 93, 93);
+  margin: -3px 0px 0px 0px;
+  /*background-color: rgb(225, 93, 93);*/
 }
 
 .card-text {
-  overflow: scroll;
+  overflow-y: scroll;
+  height: 190px;
   border: 1px solid grey;
   padding: 10px;
 
 }
 
-.card-title{
+.card-title {
   font-weight: bold !important;
   text-decoration: underline !important;
   text-align: left !important;
   border-bottom: 3px solid black;
+}
+
+.card-box {
+  padding: 10px 10px 0px 10px !important;
+}
+
+.card-header h1 {
+  margin: 30px auto 0px;
+  font-size: 28px;
+  font-weight: 500;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  padding: 0 0 10px 0;
+  width: 90%;
 }

@@ -39,10 +39,10 @@ class ChangePass extends Component {
   render() {
 
     return (
-      <div className='change-form'>
+      <div>
       <form className='sign-up' onSubmit={this.handleSubmit}>
-        <div className="row sign-up">
-          <div className="six columns">
+        <div className="row">
+          <div className="six columns change-form">
             <label>Old Password</label>
             <input className="u-full-width"
                    type="password"

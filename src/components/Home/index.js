@@ -7,18 +7,17 @@ import './style.css'
 
 
 const CardTemplate = (template) => (
-  <Card className='story-card'>
-    <CardHeader
-      className="card-title"
-      title={template.title}
-      subtitle={template.description}
-    />
-    <CardActions>
+  <div className='story-card'>
+    <header>
+      <h3>{template.title}</h3>
+    </header>
+    <p>{template.requiredWords.length} replaceable words</p>
+    <footer>
       <Link to={`/stories/${ template._id}`}>
       <button className='button-primary button-start'>Start this story!</button>
       </Link>
-    </CardActions>
-  </Card>
+    </footer>
+  </div>
 );
 
 
