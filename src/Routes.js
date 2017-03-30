@@ -21,7 +21,7 @@ import NotFound from './components/NotFound'
 
 const Routes = () => (
   <Router>
-    <AppLayout><
+    <AppLayout>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/home" component={Home} />
