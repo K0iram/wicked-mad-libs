@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from 'react-router-dom/BrowserRouter'
+import Router from 'react-router-dom/HashRouter'
 import Route from 'react-router-dom/Route'
 
 import AppLayout from './layouts/main'
