@@ -20,6 +20,7 @@ const Routes = () => (
   <Router>
     <AppLayout>
       <Route path="/" component={Home} />
+      <Route path="/home" component={Home} />
       <Route exact path="/stories" component={Stories} />
       <Route exact path="/stories/:storyId" component={Stories} />
       <Route path="/about" component={About} />
