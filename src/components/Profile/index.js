@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import API from '../../API/'
 import STORE from '../../store'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'

@@ -44,7 +44,6 @@ handleSubmit(event) {
       STORE.user = res.data.user
       STORE.token = res.data.user.token
       window.localStorage.setItem('user', JSON.stringify(res.data.user))
-
       this.setState({registered: true})
       (window.AppNotify("Thank you for signing up"))
     })

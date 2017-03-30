@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import STORE from '../../../store'
+import API from '../../../API'
 
 class LogOut extends Component {
   componentWillMount() {
@@ -8,6 +9,7 @@ class LogOut extends Component {
   }
 
   logout() {
+    API.signOut()
     window.localStorage.clear()
     STORE.user = {}
     STORE.token = null
