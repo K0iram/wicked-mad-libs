@@ -54,6 +54,7 @@ handleLogin = () => {
     this.setState({registered: true})
     (window.AppNotify("Thank you for signing up"))
   })
+
 }
 
   render() {
