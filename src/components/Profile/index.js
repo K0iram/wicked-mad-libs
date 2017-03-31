@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import API from '../../API/'
 import STORE from '../../store'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import moment from 'moment'
 import './style.css'
 
@@ -63,6 +64,13 @@ deletePage(event) {
       <div className='card-header'>
         <h1>Welcome back {STORE.user.email}</h1>
         <div className="page-list">
+          {!this.state.pages.length &&
+            <div className='story-error'>
+              <h2> You have no stories, get started!</h2>
+                <h4>Get started <Link to="/home">Here!</Link></h4>
+            </div>
+          }
+
           {this.state.pages.map((page) => {
             return (
               this.renderCard(page)
