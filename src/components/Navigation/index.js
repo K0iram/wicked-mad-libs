@@ -94,5 +94,4 @@ class Navigation extends Component {
   }
 }
 
-<IconButton iconStyle={styles.smallIcon} style={styles.small}><ActionHome /></IconButton>
 export default Navigation

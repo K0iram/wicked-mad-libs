@@ -48,13 +48,13 @@ handleSubmit(event) {
 handleLogin = () => {
   let data = {credentials: {email: this.state.email, password: this.state.password}}
   API.signIn(data).then((res) => {
+
     STORE.user = res.data.user
     STORE.token = res.data.user.token
     window.localStorage.setItem('user', JSON.stringify(res.data.user))
     this.setState({registered: true})
-    (window.AppNotify("Thank you for signing up"))
+    window.AppNotify("Thank you for signing up")
   })
-
 }
 
   render() {

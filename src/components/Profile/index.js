@@ -31,7 +31,7 @@ componentDidMount() {
 
 renderCard(page) {
   return(
-  <Card className='page-card'>
+  <Card className='page-card' key={page.id}>
     <CardHeader
       className='card-title'
       title={page.title}

@@ -5,7 +5,7 @@ import './style.css'
 
 
 const CardTemplate = (template) => (
-  <div className='story-card'>
+  <div className='story-card' key={template.id}>
     <header>
       <h3>{template.title}</h3>
     </header>

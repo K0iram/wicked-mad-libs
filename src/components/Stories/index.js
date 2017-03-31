@@ -47,7 +47,6 @@ class Stories extends Component {
   updateStory(index, event) {
     const updatedUserWords = [...this.state.userWords].map((word, wordIndex) => {
       if (wordIndex === index) return event.target.value
-
       return word
     })
 
@@ -86,6 +85,7 @@ class Stories extends Component {
     return this.state.requiredWords.map((type, index) => {
       return (
         <input
+          key={index}
           type='text'
           className='story-form'
           required='required'
@@ -108,7 +108,9 @@ class Stories extends Component {
     return storyString
   }
 
-  showPreview() {
+  showPreview(event) {
+    event.preventDefault()
+
     this.setState({finalStory: this.getFinalStory(), isComplete: true})
   }
 
@@ -137,7 +139,7 @@ class Stories extends Component {
                   <Link
                     className="button-primary btn"
                     to={{pathname: '/signin', state:{toSave: this.state, storyId: this.props.match.params.storyId }}}>
-                    <button className="save" type='submit'>Save this lib!</button>
+                    <button className="save">Save this lib!</button>
                   </Link>
                   <br/>
                   <h5> You must have an account to save this lib!</h5>
