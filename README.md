@@ -14,7 +14,7 @@ A fun word game to play with friends!
 
 1.  Fork and clone this repository.
 2.  Install dependencies with `npm install`.
-3.  Install yarn with 'brew update , brew install yarn'
+3.  Install yarn with `brew update brew install yarn`
 4.  Run the front-end server with `yarn start`.
 
 ## Approach
