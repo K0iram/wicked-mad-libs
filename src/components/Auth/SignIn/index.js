@@ -82,7 +82,7 @@ class SignIn extends Component {
           </form>
 
           <br/>
-          <p> Don't have an account? Please <Link to="/signup">Sign Up!</Link></p>
+          <p> Don't have an account? Please <Link to={ {pathname: '/signup', state:{hasRedirectState: hasRedirectState}} }>Sign Up!</Link></p>
           <p> Don't want to save you finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
       </div>
     );

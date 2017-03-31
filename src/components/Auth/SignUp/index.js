@@ -20,6 +20,7 @@ class SignUp extends Component {
     this.handlePassChange = this.handlePassChange.bind(this)
     this.handlePassConfirmChange = this.handlePassConfirmChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
 }
 
 handleEmailChange(event) {
@@ -38,24 +39,25 @@ handleSubmit(event) {
   event.preventDefault()
   let data = {credentials: this.state}
 
-  API.signUp(data).then((res) => {
-    let data = {credentials: {email: this.state.email, password: this.state.password}}
-    API.signIn(data).then((res) => {
-      STORE.user = res.data.user
-      STORE.token = res.data.user.token
-      window.localStorage.setItem('user', JSON.stringify(res.data.user))
-      this.setState({registered: true})
-      (window.AppNotify("Thank you for signing up"))
+  API.signUp(data).then(this.handleLogin)
+    .catch(() => {
+      window.AppNotify("Something went wrong please try again.")
     })
-  })
-  .catch(() => {
-    window.AppNotify("Something went wrong please try again.")
-  })
+}
 
+handleLogin = () => {
+  let data = {credentials: {email: this.state.email, password: this.state.password}}
+  API.signIn(data).then((res) => {
+    STORE.user = res.data.user
+    STORE.token = res.data.user.token
+    window.localStorage.setItem('user', JSON.stringify(res.data.user))
+    this.setState({registered: true})
+    (window.AppNotify("Thank you for signing up"))
+  })
 }
 
   render() {
-    const hasRedirectState = (!!this.props.location.state && !!this.props.location.state.storyId) ? {pathname: `/stories/${this.props.location.state.storyId}`, state: this.props.location.state} : "/home"
+    const hasRedirectState = (!!this.props.location.state && !!this.props.location.state.hasRedirectState) ? this.props.location.state.hasRedirectState : "/home"
 
     if (this.state.registered) return <Redirect to={hasRedirectState}/>
 
