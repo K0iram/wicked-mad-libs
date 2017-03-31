@@ -66,8 +66,8 @@ deletePage(event) {
         <div className="page-list">
           {!this.state.pages.length &&
             <div className='story-error'>
-              <h2> You have no stories, get started!</h2>
-                <h4>Get started <Link to="/home">Here!</Link></h4>
+              <h2> You have no stories, <Link to="/home">get started!</Link></h2>
+
             </div>
           }
 
