@@ -8,6 +8,7 @@ A fun word game to play with friends!
 - [Deployed website!](https://wicked-mad-libs.herokuapp.com)
 - [Back-end Repo](https://github.com/mario7746/mad-libs-API)
 - [Link to wireframes](http://imgur.com/a/zRHvw)
+- [Link to my pitch deck](http://prezi.com/hxtf8rxslwwf/?utm_campaign=share&utm_medium=copy&rc=ex0share)
 
 ## Installation
 
@@ -58,8 +59,3 @@ I would like to be able to share funny libs among users and have users be able t
 - Moment
 - Yarn
 
-
-
-## Wireframes and planning
-
-  <a href="http://imgur.com/a/zRHvw"> See Them Here </a>
