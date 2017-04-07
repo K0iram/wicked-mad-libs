@@ -4,6 +4,12 @@ import API from '../../../API'
 import STORE from '../../../store'
 
 import './style.css'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const style = {
+  margin: 12,
+};
 
 class SignUp extends Component {
   constructor(props) {
@@ -67,39 +73,30 @@ handleLogin = () => {
         <h1>Sign Up</h1>
         <p>In order to be able to save your stories you must create an account</p>
           <form className='sign-up' onSubmit={this.handleSubmit}>
-            <div className="row sign-up">
-              <div className="six columns">
-                <label>Your email</label>
-
-                <input type="email"
-                       placeholder="Email"
-                       required="required"
-                       onChange={this.handleEmailChange}
-                       value={this.state.email}/>
-              </div>
-              <div className="six columns">
-                <label>Your Password</label>
-
-                <input type="password"
-                       placeholder="Password"
-                       required="required"
-                       onChange={this.handlePassChange}
-                       value={this.state.password}/>
-              </div>
-              <div className="six columns">
-                <label>Confirm Password</label>
-                <input type="password"
-                       placeholder="Password Confirmation"
-                       required="required"
-                       onChange={this.handlePassConfirmChange}
-                       value={this.state.password_confirmation}/>
-              </div>
-              <br/>
+                <TextField
+                    hintText="Email"
+                    floatingLabelText="Email"
+                    type="email"
+                    required="required"
+                    onChange={this.handleEmailChange}
+                    value={this.state.email}/>
+                  <TextField
+                      hintText="Password"
+                      floatingLabelText="Password"
+                      type="password"
+                      required="required"
+                      onChange={this.handlePassChange}
+                      value={this.state.password}/>
+                  <TextField
+                      hintText="Password Confirmation"
+                      floatingLabelText="Password Confirmation"
+                      type="password"
+                      required="required"
+                      onChange={this.handlePassConfirmChange}
+                      value={this.state.password_confirmation}/>
               <div>
-                <input className="button-primary button" type="submit" value="Submit" />
+                <RaisedButton label="Submit" primary={true} style={style} type="submit" value="Submit"/>
               </div>
-            </div>
-
           </form>
 
 
