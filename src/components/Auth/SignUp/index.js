@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import API from '../../../API'
 import STORE from '../../../store'
-
-import './style.css'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+
+import './style.css'
+
 
 const style = {
   margin: 12,
@@ -74,21 +75,18 @@ handleLogin = () => {
         <p>In order to be able to save your stories you must create an account</p>
           <form className='sign-up' onSubmit={this.handleSubmit}>
                 <TextField
-                    hintText="Email"
                     floatingLabelText="Email"
                     type="email"
                     required="required"
                     onChange={this.handleEmailChange}
                     value={this.state.email}/>
                   <TextField
-                      hintText="Password"
                       floatingLabelText="Password"
                       type="password"
                       required="required"
                       onChange={this.handlePassChange}
                       value={this.state.password}/>
                   <TextField
-                      hintText="Password Confirmation"
                       floatingLabelText="Password Confirmation"
                       type="password"
                       required="required"

@@ -1,0 +1,7 @@
+.change-pass {
+  display: inline-grid !important;
+  max-width: 650px;
+  min-width: 250px;
+  border: 5px solid #999;
+  padding: 20px;
+}

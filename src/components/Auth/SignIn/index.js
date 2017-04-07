@@ -60,14 +60,12 @@ class SignIn extends Component {
 
           <form className='sign-in' onSubmit={this.handleSubmit}>
             <TextField
-                hintText="Email"
                 floatingLabelText="Email"
                 type="email"
                 required="required"
                 onChange={this.handleEmailChange}
                 value={this.state.email}/>
               <TextField
-                  hintText="Password"
                   floatingLabelText="Password"
                   type="password"
                   required="required"
