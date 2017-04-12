@@ -70,9 +70,9 @@ handleLogin = () => {
     if (this.state.registered) return <Redirect to={hasRedirectState}/>
 
     return (
-      <div>
-        <h1>Sign Up</h1>
-        <p>In order to be able to save your stories you must create an account</p>
+      <div className='upForm'>
+        <h2>Sign Up</h2>
+
           <form className='sign-up' onSubmit={this.handleSubmit}>
                 <TextField
                     floatingLabelText="Email"
@@ -95,13 +95,8 @@ handleLogin = () => {
               <div>
                 <RaisedButton label="Submit" primary={true} style={style} type="submit" value="Submit"/>
               </div>
+              <p> Already have an account? Please <Link to="/signin">Login here!</Link></p>
           </form>
-
-
-
-
-          <br/>
-          <p> Already have an account? Please <Link to="/signin">Login here!</Link></p>
           <p> Don't want to save you finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
       </div>
     );

@@ -52,7 +52,7 @@ class ChangePass extends Component {
   render() {
 
     return (
-      <div>
+      <div className='changeForm'>
         <h2> Change your password </h2>
       <form className='change-pass' onSubmit={this.handleSubmit}>
         <TextField

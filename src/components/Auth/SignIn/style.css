@@ -5,3 +5,11 @@
   border: 5px solid #999;
   padding: 20px 100px 20px 100px;
 }
+
+.inForm h2 {
+  padding-top: 5%
+}
+
+.inForm p {
+  padding-top: 1%;
+}

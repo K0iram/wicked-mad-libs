@@ -53,7 +53,7 @@ class SignIn extends Component {
     const hasRedirectState = (!!this.props.location.state && !!this.props.location.state.storyId) ? {pathname: `/stories/${this.props.location.state.storyId}`, state: this.props.location.state} : "/home"
     if (this.state.loggedIn) return <Redirect to={hasRedirectState}/>
     return (
-      <div>
+      <div className='inForm'>
         <h2>Sign In</h2>
 
           <form className='sign-in' onSubmit={this.handleSubmit}>
@@ -69,13 +69,14 @@ class SignIn extends Component {
                   required="required"
                   onChange={this.handlePassChange}
                   value={this.state.password}/>
+                <br/>
               <div>
                 <RaisedButton label="Submit" primary={true} style={style} type="submit" value="Submit"/>
               </div>
+              <footer>
+                <p> Don't have an account? Please <Link to={ {pathname: '/signup', state:{hasRedirectState: hasRedirectState}} }>Sign Up!</Link></p>
+              </footer>
           </form>
-
-          <br/>
-          <p> Don't have an account? Please <Link to={ {pathname: '/signup', state:{hasRedirectState: hasRedirectState}} }>Sign Up!</Link></p>
           <p> Don't want to save your finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
       </div>
     );

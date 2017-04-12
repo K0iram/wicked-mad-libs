@@ -11,3 +11,11 @@ display: block;
 margin-left: 20px;
 margin-top: 28px;
 }
+
+.upForm h2 {
+  padding-top: 5%
+}
+
+.upForm p {
+  padding-top: 1%;
+}
