@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import API from '../../../API'
 import STORE from '../../../store'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import './style.css'
+
+const style = {
+  margin: 12,
+};
 
 class ChangePass extends Component {
   constructor(props) {
@@ -47,33 +54,23 @@ class ChangePass extends Component {
     return (
       <div>
         <h2> Change your password </h2>
-      <form className='sign-up' onSubmit={this.handleSubmit}>
-        <div className="row">
-          <div className="six columns change-form">
-            <label>Old Password</label>
-            <input className="u-full-width"
-                   type="password"
-                   placeholder="Old Password"
-                   required="required"
-                   onChange={this.handlePassChange}
-                   value={this.state.password}/>
-          </div>
-          <div className="six columns">
-            <label>New Password</label>
-            <input className="u-full-width"
-                   type="password"
-                   placeholder="New Password"
-                   required="required"
-                   onChange={this.handlePassConfirmChange}
-                   value={this.state.password_new}/>
-          </div>
-          <br/>
+      <form className='change-pass' onSubmit={this.handleSubmit}>
+        <TextField
+            floatingLabelText="Password"
+            type="password"
+            required="required"
+            onChange={this.handlePassChange}
+            value={this.state.password}/>
+        <TextField
+            floatingLabelText="Password Confirmation"
+            type="password"
+            required="required"
+            onChange={this.handlePassConfirmChange}
+            value={this.state.password_confirmation}/>
           <div>
-            <input className="button-primary button" type="submit" value="Submit" />
-            <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
+            <RaisedButton label="Submit" primary={true} style={style} type="submit" value="Submit"/>
+            <Link to="/home"><RaisedButton label="Cancel" default={true} style={style}/></Link>
           </div>
-        </div>
-
       </form>
 
       </div>

@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import API from '../../API/'
 import STORE from '../../store'
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 import './style.css'
+
+const style = {
+  margin: 12,
+};
 
 
 class Stories extends Component {
@@ -56,25 +62,25 @@ class Stories extends Component {
   getFormattedType(type) {
     const types = {
       "$$$PLACE": "A Place",
-      "$$$ADJECTIVE": "A Adjective",
-      "$$$FEMALE_NAME": "A Female Name",
+      "$$$ADJECTIVE": "Adjective",
+      "$$$FEMALE_NAME": "Name (Female)",
       "$$$BODY_PART": "A Body Part",
       "$$$BODY_ORGAN": "A Human Organ",
-      "$$$MALE_NAME": "A Male Name",
-      "$$$VERB_ING": "A Verb With ing",
-      "$$$CELEB_FEMALE": "A Female Celebrity",
+      "$$$MALE_NAME": "Name (Male)",
+      "$$$VERB_ING": "Verb With ing",
+      "$$$CELEB_FEMALE": "Celebrity (Female)",
       "$$$SILLY_WORD": "A Silly Word",
-      "$$$FOOD": "A Type of Food",
-      "$$$VERB_PAST": "A Past Tense Verb",
-      "$$$NOUN": "A Noun",
-      "$$$ADVERB": "A Adverb",
-      "$$$PLURAL_NOUN": "A Plural Noun",
+      "$$$FOOD": "Type of Food",
+      "$$$VERB_PAST": "Verb (Past Tense)",
+      "$$$NOUN": "Noun",
+      "$$$ADVERB": "Adverb",
+      "$$$PLURAL_NOUN": "Plural Noun",
       "$$$SHOE_TYPE_PLURAL": "Shoe Type (Plural)",
       "$$$BUG_TYPE": "Type of Bug",
-      "$$$VERB": "A Verb",
-      "$$$EXCLAMATION": "Eclamation!",
+      "$$$VERB": "Verb",
+      "$$$EXCLAMATION": "Exclamation!",
       "$$$LIQUID": "A Liquid",
-      "$$$FOOD_PLURAL": "A Type of Food (plural)"
+      "$$$FOOD_PLURAL": "Type of Food (plural)"
 
     }
 
@@ -84,13 +90,13 @@ class Stories extends Component {
   renderFormFeilds() {
     return this.state.requiredWords.map((type, index) => {
       return (
-        <input
+        <TextField
           key={index}
+          floatingLabelText={this.getFormattedType(type)}
           type='text'
           className='story-form'
           required='required'
           maxLength='20'
-          placeholder={this.getFormattedType(type)}
           onChange={ this.updateStory.bind(this, index) } />
       )
     })
@@ -155,8 +161,8 @@ class Stories extends Component {
             <form className="story" onSubmit={ this.showPreview }>
               { this.renderFormFeilds() }
               <br/>
-              <button className="button-primary btn" type='submit'>Finished!</button>
-              <Link to="/home"><button className="button-danger btn">Cancel</button></Link>
+                <RaisedButton label="Finished" primary={true} style={style} type="submit" value="Submit"/>
+                <Link to="/home"><RaisedButton label="Cancel" default={true} style={style}/></Link>
             </form>
 
           </div>

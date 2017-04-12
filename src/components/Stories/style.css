@@ -7,8 +7,10 @@
 }
 
 .story {
-  width: 65%;
-  display: table-cell;
+  width: 25%;
+  display: inline-grid;
+  justify-content: center;
+  border: 2px solid #999;
 }
 
 .final-story {
@@ -16,10 +18,6 @@
   width: 350px;
   margin: 0 auto;
   padding: 20px;
-}
-
-story-form {
-  width: 400px !important;
 }
 
 .save {

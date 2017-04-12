@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import API from '../../../API'
 import STORE from '../../../store'
-
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 import './style.css'
+
+const style = {
+  margin: 12,
+};
 
 class SignIn extends Component {
   constructor(props) {
@@ -49,41 +54,29 @@ class SignIn extends Component {
     if (this.state.loggedIn) return <Redirect to={hasRedirectState}/>
     return (
       <div>
-        <h1>Sign In</h1>
+        <h2>Sign In</h2>
 
-        <p>Sign in and start playing now!</p>
-
-          <form className='sign-up' onSubmit={this.handleSubmit}>
-            <div className="row sign-up">
-              <div className="six columns">
-                <label>Your email</label>
-                <input className="u-full-width"
-                       type="email"
-                       placeholder="Email"
-                       required="required"
-                       onChange={this.handleEmailChange}
-                       value={this.state.email}/>
-              </div>
-              <div className="six columns">
-                <label>Your Password</label>
-                <input className="u-full-width"
-                       type="password"
-                       placeholder="Password"
-                       required="required"
-                       onChange={this.handlePassChange}
-                       value={this.state.password}/>
-              </div>
-              <br/>
+          <form className='sign-in' onSubmit={this.handleSubmit}>
+            <TextField
+                floatingLabelText="Email"
+                type="email"
+                required="required"
+                onChange={this.handleEmailChange}
+                value={this.state.email}/>
+              <TextField
+                  floatingLabelText="Password"
+                  type="password"
+                  required="required"
+                  onChange={this.handlePassChange}
+                  value={this.state.password}/>
               <div>
-                <input className="button-primary button" type="submit" value="Submit" />
+                <RaisedButton label="Submit" primary={true} style={style} type="submit" value="Submit"/>
               </div>
-            </div>
-
           </form>
 
           <br/>
           <p> Don't have an account? Please <Link to={ {pathname: '/signup', state:{hasRedirectState: hasRedirectState}} }>Sign Up!</Link></p>
-          <p> Don't want to save you finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
+          <p> Don't want to save your finished stories? Go back <Link to="/home">home</Link> to keep playing!</p>
       </div>
     );
   }
