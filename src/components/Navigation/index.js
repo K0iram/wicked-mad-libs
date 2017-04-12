@@ -22,18 +22,21 @@ class Login extends Component {
 }
 
 const styles = {
+  title: {
+    cursor: 'pointer',
+  },
   smallIcon: {
   width: 36,
   height: 36,
-},
-mediumIcon: {
-  width: 48,
-  height: 48,
-},
-largeIcon: {
-  width: 60,
-  height: 60,
-},
+  },
+  mediumIcon: {
+    width: 48,
+    height: 48,
+  },
+  largeIcon: {
+    width: 60,
+    height: 60,
+  },
 };
 
 const Logged = (props) => (
@@ -62,6 +65,7 @@ class Navigation extends Component {
     this.state = {
       logged: !!STORE.token,
     }
+      this.handleTouchTap = this.handleTouchTap.bind(this)
   }
 
   componentWillReceiveProps() {
@@ -72,18 +76,23 @@ class Navigation extends Component {
     this.setState({logged: logged});
   }
 
+  handleTouchTap() {
+
+  }
+
 
   render() {
     return (
 
       <AppBar
         className="nav-bar"
-        title="Wicked Mad Libs"
+        title={<span style={styles.title}>Wicked Mad Libs</span>}
+        onTouchTap={this.handleTouchTap}
         iconElementLeft={
           <Link to='/home'>
           <IconButton
-          iconStyle={styles.smallIcon}
-          style={styles.small}>
+            iconStyle={styles.smallIcon}
+            style={styles.small}>
           <ActionHome />
           </IconButton>
           </Link>

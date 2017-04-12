@@ -1,4 +1,15 @@
 .not-found {
-  font-size: 35px;
-  margin-top: 50px;
+  font-size: 3em;
+  color: red;
+  padding: 10%;
+  border: 2px solid black;
+  background: #eee;
+  width: 65%;
+  margin: 0 auto;
+  margin-top: 5%
+}
+
+.not-found h1 {
+  font-size: 2em;
+  font-weight: bolder;
 }

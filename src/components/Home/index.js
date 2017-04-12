@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import RaisedButton from 'material-ui/RaisedButton';
 import API from '../../API'
 import './style.css'
 
@@ -12,7 +13,12 @@ const CardTemplate = (template) => (
     <p>{template.requiredWords.length} replaceable words</p>
     <footer>
       <Link to={`/stories/${ template._id}`}>
-      <button className='button-primary button-start'>Start this story!</button>
+      <RaisedButton
+        className='button-primary button-start'
+        label="Start this story!"
+        primary={true}
+        type="submit"
+        value="Submit"/>
       </Link>
     </footer>
   </div>
