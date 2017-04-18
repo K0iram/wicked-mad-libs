@@ -79,7 +79,6 @@ class Navigation extends Component {
   }
 
   handleTouchTap() {
-    console.log(this.context.history)
     this.props.history.push('/home')
   }
 

@@ -80,18 +80,18 @@ handleLogin = () => {
                     required="required"
                     onChange={this.handleEmailChange}
                     value={this.state.email}/>
-                  <TextField
-                      floatingLabelText="Password"
-                      type="password"
-                      required="required"
-                      onChange={this.handlePassChange}
-                      value={this.state.password}/>
-                  <TextField
-                      floatingLabelText="Password Confirmation"
-                      type="password"
-                      required="required"
-                      onChange={this.handlePassConfirmChange}
-                      value={this.state.password_confirmation}/>
+                <TextField
+                    floatingLabelText="Password"
+                    type="password"
+                    required="required"
+                    onChange={this.handlePassChange}
+                    value={this.state.password}/>
+                <TextField
+                    floatingLabelText="Password Confirmation"
+                    type="password"
+                    required="required"
+                    onChange={this.handlePassConfirmChange}
+                    value={this.state.password_confirmation}/>
               <div>
                 <RaisedButton label="Submit" primary={true} style={style} type="submit" value="Submit"/>
               </div>
