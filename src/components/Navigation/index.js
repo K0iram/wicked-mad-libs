@@ -1,18 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router-dom'
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import ActionHome from 'material-ui/svg-icons/action/home';
+import { withRouter } from 'react-router'
+import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import FlatButton from 'material-ui/FlatButton'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import ActionHome from 'material-ui/svg-icons/action/home'
+import LogoSrc from '../../logo.png'
 
 
 import STORE from '../../store'
 
 class Login extends Component {
-  static muiName = 'FlatButton';
+  static muiName = 'FlatButton'
 
   render() {
     return (
@@ -23,19 +25,13 @@ class Login extends Component {
 
 const styles = {
   title: {
-    cursor: 'pointer',
+  cursor: 'pointer',
+  width: 220,
+  padding: 10,
   },
   smallIcon: {
   width: 36,
   height: 36,
-  },
-  mediumIcon: {
-    width: 48,
-    height: 48,
-  },
-  largeIcon: {
-    width: 60,
-    height: 60,
   },
 };
 
@@ -59,6 +55,12 @@ Logged.muiName = 'IconMenu';
 
 class Navigation extends Component {
 
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  }
+
   constructor(props) {
     super(props)
 
@@ -77,7 +79,14 @@ class Navigation extends Component {
   }
 
   handleTouchTap() {
+    console.log(this.context.history)
+    this.props.history.push('/home')
+  }
 
+  renderAppBarTitle() {
+    return (
+      <img className='logo' src={LogoSrc} alt='logo' style={styles.title}/>
+  )
   }
 
 
@@ -86,7 +95,7 @@ class Navigation extends Component {
 
       <AppBar
         className="nav-bar"
-        title={<span style={styles.title}>Wicked Mad Libs</span>}
+        title={this.renderAppBarTitle()}
         onTouchTap={this.handleTouchTap}
         iconElementLeft={
           <Link to='/home'>
@@ -103,4 +112,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation
+export default withRouter(Navigation)

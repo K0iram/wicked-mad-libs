@@ -10,7 +10,10 @@
   width: 25%;
   display: inline-grid;
   justify-content: center;
-  border: 2px solid #999;
+}
+
+.story-form {
+  width: 25%;
 }
 
 .final-story {
