@@ -26,8 +26,8 @@ class Login extends Component {
 const styles = {
   title: {
   cursor: 'pointer',
-  width: 220,
-  padding: 10,
+  width: 250,
+  padding: 20,
   },
   smallIcon: {
   width: 36,
