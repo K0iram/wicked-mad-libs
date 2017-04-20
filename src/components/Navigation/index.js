@@ -84,7 +84,9 @@ class Navigation extends Component {
 
   renderAppBarTitle() {
     return (
-      <img className='logo' src={LogoSrc} alt='logo' style={styles.title}/>
+      <span>
+        <img className='logo' src={LogoSrc} alt='logo' style={styles.title}/>
+      </span>
   )
   }
 
