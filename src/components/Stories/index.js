@@ -69,6 +69,8 @@ class Stories extends Component {
       "$$$MALE_NAME": "Name (Male)",
       "$$$VERB_ING": "Verb With ing",
       "$$$CELEB_FEMALE": "Celebrity (Female)",
+      "$$$CELEB": "Celebrity",
+      "$$$PERSON": "Person In The Room",
       "$$$SILLY_WORD": "A Silly Word",
       "$$$FOOD": "Type of Food",
       "$$$VERB_PAST": "Verb (Past Tense)",
